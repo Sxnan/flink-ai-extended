@@ -18,15 +18,7 @@
         </dependency>
         <dependency>
             <groupId>org.tensorflow</groupId>
-            <artifactId>tensorflow</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.tensorflow</groupId>
-            <artifactId>proto</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.tensorflow</groupId>
-            <artifactId>tensorflow-hadoop</artifactId>
+            <artifactId>tensorflow-core-api</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.flink</groupId>

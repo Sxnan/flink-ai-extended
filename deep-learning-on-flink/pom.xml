@@ -67,6 +67,7 @@
         <log4j.version>2.11.1</log4j.version>
         <hadoop.version>2.8.0</hadoop.version>
         <tensorflow.version>1.15.0</tensorflow.version>
+        <tensorflow.java.version>0.2.0</tensorflow.java.version>
         <tensorflow.package.name>tensorflow</tensorflow.package.name>
         <netty.version>4.1.30.Final</netty.version>
         <curator.version>2.7.1</curator.version>
@@ -290,18 +291,8 @@
             </dependency>
             <dependency>
                 <groupId>org.tensorflow</groupId>
-                <artifactId>tensorflow</artifactId>
-                <version>${tensorflow.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.tensorflow</groupId>
-                <artifactId>proto</artifactId>
-                <version>${tensorflow.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.tensorflow</groupId>
-                <artifactId>tensorflow-hadoop</artifactId>
-                <version>${tensorflow.version}</version>
+                <artifactId>tensorflow-core-api</artifactId>
+                <version>${tensorflow.java.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
