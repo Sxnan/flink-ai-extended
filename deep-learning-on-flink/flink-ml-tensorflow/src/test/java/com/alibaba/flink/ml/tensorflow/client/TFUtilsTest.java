@@ -69,6 +69,7 @@ public class TFUtilsTest {
 		StreamExecutionEnvironment streamEnv = StreamExecutionEnvironment.getExecutionEnvironment();
 
 		TFConfig config = new TFConfig(2, 1, null, add, "map_func", null);
+		config.getMlConfig().addProperty(MLConstants.PYTHON_VERSION, "3");
 		TFUtils.train(streamEnv, null, config);
 
 		JobExecutionResult result = streamEnv.execute();
@@ -83,6 +84,7 @@ public class TFUtilsTest {
 		StatementSet statementSet = tableEnv.createStatementSet();
 
 		TFConfig config = new TFConfig(2, 1, null, add, "map_func", null);
+		config.getMlConfig().addProperty(MLConstants.PYTHON_VERSION, "3");
 		TFUtils.train(streamEnv, tableEnv, statementSet, null, config, null);
 
 		execTableJobCustom(config.getMlConfig(), streamEnv, tableEnv, statementSet);
@@ -94,6 +96,7 @@ public class TFUtilsTest {
 		StreamExecutionEnvironment streamEnv = StreamExecutionEnvironment.getExecutionEnvironment();
 
 		TFConfig config = new TFConfig(2, 1, null, add, "map_func", null);
+		config.getMlConfig().addProperty(MLConstants.PYTHON_VERSION, "3");
 		config.addProperty(TFConstants.TF_IS_CHIEF_ALONE, "true");
 
 		TFUtils.train(streamEnv, null, config);
@@ -110,6 +113,7 @@ public class TFUtilsTest {
 		StatementSet statementSet = tableEnv.createStatementSet();
 
 		TFConfig config = new TFConfig(2, 1, null, add, "map_func", null);
+		config.getMlConfig().addProperty(MLConstants.PYTHON_VERSION, "3");
 		config.addProperty(TFConstants.TF_IS_CHIEF_ALONE, "true");
 		TFUtils.train(streamEnv, tableEnv, statementSet, null, config, null);
 
@@ -122,6 +126,7 @@ public class TFUtilsTest {
 		StreamExecutionEnvironment streamEnv = StreamExecutionEnvironment.getExecutionEnvironment();
 
 		TFConfig config = new TFConfig(2, 1, null, inputOutputScript, "map_func", null);
+		config.getMlConfig().addProperty(MLConstants.PYTHON_VERSION, "3");
 		config.getProperties().put(MLConstants.ENCODING_CLASS, RowCSVCoding.class.getCanonicalName());
 		config.getProperties().put(MLConstants.DECODING_CLASS, RowCSVCoding.class.getCanonicalName());
 		StringBuilder inputSb = new StringBuilder();
@@ -156,6 +161,7 @@ public class TFUtilsTest {
 		StreamExecutionEnvironment flinkEnv = StreamExecutionEnvironment.getExecutionEnvironment();
 
 		TFConfig config = new TFConfig(2, 1, null, addTBScript, "map_func", null);
+		config.getMlConfig().addProperty(MLConstants.PYTHON_VERSION, "3");
 		config.getProperties().put(MLConstants.FLINK_HOOK_CLASSNAMES, DebugHook.class.getCanonicalName());
 		config.addProperty(MLConstants.CHECKPOINT_DIR, ckptDir + String.valueOf(System.currentTimeMillis()));
 		TFUtils.train(flinkEnv, null, config);
@@ -176,6 +182,7 @@ public class TFUtilsTest {
 		StatementSet statementSet = tableEnv.createStatementSet();
 
 		TFConfig config = new TFConfig(2, 1, null, addTBScript, "map_func", null);
+		config.getMlConfig().addProperty(MLConstants.PYTHON_VERSION, "3");
 		config.getProperties().put(MLConstants.FLINK_HOOK_CLASSNAMES, DebugHook.class.getCanonicalName());
 		config.addProperty(MLConstants.CHECKPOINT_DIR, ckptDir + String.valueOf(System.currentTimeMillis()));
 		TFUtils.train(streamEnv, tableEnv, statementSet, null, config, null);
@@ -196,6 +203,7 @@ public class TFUtilsTest {
 		TableEnvironment tableEnv = StreamTableEnvironment.create(streamEnv);
 		StatementSet statementSet = tableEnv.createStatementSet();
 		TFConfig config = new TFConfig(3, 2, null, workerZeroFinishScript, "map_func", null);
+		config.getMlConfig().addProperty(MLConstants.PYTHON_VERSION, "3");
 		TFUtils.train(streamEnv, tableEnv, statementSet, null, config, null);
 		execTableJobCustom(config.getMlConfig(), streamEnv, tableEnv, statementSet);
 	}
