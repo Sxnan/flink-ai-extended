@@ -44,6 +44,7 @@ public class ProcessPythonRunnerTest extends TestWithNodeService {
 		context.setPythonFiles(new String[] { scriptName });
 		context.setFuncName("map_func");
 		configureContext(context);
+		context.getProperties().put(MLConstants.PYTHON_VERSION, "3");
 		return context;
 	}
 
