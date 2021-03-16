@@ -26,7 +26,7 @@ import org.tensorflow.types.TFloat32;
 import org.tensorflow.types.TFloat64;
 import org.tensorflow.types.TInt32;
 import org.tensorflow.types.TInt64;
-import org.tensorflow.types.TUint8;
+import org.tensorflow.types.TString;
 
 import java.io.Serializable;
 
@@ -151,78 +151,23 @@ public class TensorConversion {
 				switch (rank){
 					case 1:{
 						String[] stringArray = (String[])object;
-						byte[][] temp = new byte[stringArray.length][];
-						for(int i = 0; i < stringArray.length; i++){
-							temp[i] = stringArray[i].getBytes();
-						}
-						return TUint8.tensorOf(StdArrays.ndCopyOf(temp));
+						return TString.tensorOf(StdArrays.ndCopyOf(stringArray));
 					}
 					case 2:{
 						String[][] stringArray = (String[][])object;
-						int len1 = stringArray.length;
-						int len2 = stringArray[0].length;
-						byte[][][] temp = new byte[len1][len2][];
-						for(int i = 0; i < len1; i++){
-							for(int j = 0; j < len2; j++) {
-								temp[i][j] = stringArray[i][j].getBytes();
-							}
-						}
-						return TUint8.tensorOf(StdArrays.ndCopyOf(temp));
+						return TString.tensorOf(StdArrays.ndCopyOf(stringArray));
 					}
 					case 3:{
 						String[][][] stringArray = (String[][][])object;
-						int len1 = stringArray.length;
-						int len2 = stringArray[0].length;
-						int len3 = stringArray[0][0].length;
-						byte[][][][] temp = new byte[len1][len2][len3][];
-						for(int i = 0; i < len1; i++){
-							for(int j = 0; j < len2; j++) {
-								for(int k = 0; k < len3; k++) {
-									temp[i][j][k] = stringArray[i][j][k].getBytes();
-								}
-							}
-						}
-						return TUint8.tensorOf(StdArrays.ndCopyOf(temp));
+						return TString.tensorOf(StdArrays.ndCopyOf(stringArray));
 					}
 					case 4:{
 						String[][][][] stringArray = (String[][][][])object;
-						int len1 = stringArray.length;
-						int len2 = stringArray[0].length;
-						int len3 = stringArray[0][0].length;
-						int len4 = stringArray[0][0][0].length;
-						byte[][][][][] temp = new byte[len1][len2][len3][len4][];
-						for(int i = 0; i < len1; i++){
-							for(int j = 0; j < len2; j++) {
-								for(int k = 0; k < len3; k++) {
-									for(int m = 0; m < len4; m++) {
-										temp[i][j][k][m] = stringArray[i][j][k][m].getBytes();
-									}
-								}
-							}
-						}
-						return TUint8.tensorOf(StdArrays.ndCopyOf(temp));
+						return TString.tensorOf(StdArrays.ndCopyOf(stringArray));
 					}
 					case 5:{
 						String[][][][][] stringArray = (String[][][][][])object;
-						int len1 = stringArray.length;
-						int len2 = stringArray[0].length;
-						int len3 = stringArray[0][0].length;
-						int len4 = stringArray[0][0][0].length;
-						int len5 = stringArray[0][0][0][0].length;
-
-						byte[][][][][][] temp = new byte[len1][len2][len3][len4][len5][];
-						for(int i = 0; i < len1; i++){
-							for(int j = 0; j < len2; j++) {
-								for(int k = 0; k < len3; k++) {
-									for(int m = 0; m < len4; m++) {
-										for(int n = 0; n < len5; n++) {
-											temp[i][j][k][m][n] = stringArray[i][j][k][m][n].getBytes();
-										}
-									}
-								}
-							}
-						}
-						return TUint8.tensorOf(StdArrays.ndCopyOf(temp));
+						return TString.tensorOf(StdArrays.ndCopyOf(stringArray));
 					}
 					default:
 						throw new UnsupportedOperationException("dim count can't supported: " + rank);
@@ -253,7 +198,7 @@ public class TensorConversion {
 			return fromLongTensor(tensor, rank);
 		} else if (TFloat64.DTYPE.equals(tensor.dataType())) {
 			return fromDoubleTensor(tensor, rank);
-		} else if (TUint8.DTYPE.equals(tensor.dataType())) {
+		} else if (TString.DTYPE.equals(tensor.dataType())) {
 			return fromStringTensor(tensor, rank);
 		}
 
@@ -265,41 +210,23 @@ public class TensorConversion {
 		switch (rank) {
 			case 1: {
 				final int len1 = (int) tensor.shape().size(0);
-				final byte[][] resultBytes = new byte[len1][];
-				StdArrays.copyFrom((TUint8) tensor.data(), resultBytes);
-				String[] results = new String[len1];
-				for (int i = 0; i < len1; i++){
-					results[i] = new String(resultBytes[i]);
-				}
+				final String[] results = new String[len1];
+				StdArrays.copyFrom((TString) tensor.data(), results);
 				return results;
 			}
 			case 2: {
 				final int len1 = (int) tensor.shape().size(0);
 				final int len2 = (int) tensor.shape().size(1);
-				final byte[][][] resultBytes = new byte[len1][len2][];
-				StdArrays.copyFrom((TUint8) tensor.data(), resultBytes);
-				String[][] results = new String[len1][len2];
-				for (int i = 0; i < len1; i++) {
-					for (int j = 0; j < len2; j++) {
-						results[i][j] = new String(resultBytes[i][j]);
-					}
-				}
+				final String[][] results = new String[len1][len2];
+				StdArrays.copyFrom((TString) tensor.data(), results);
 				return results;
 			}
 			case 3: {
 				final int len1 = (int) tensor.shape().size(0);
 				final int len2 = (int) tensor.shape().size(1);
 				final int len3 = (int) tensor.shape().size(2);
-				final byte[][][][] resultBytes = new byte[len1][len2][len3][];
-				StdArrays.copyFrom((TUint8) tensor.data(), resultBytes);
-				String[][][] results = new String[len1][len2][len3];
-				for (int i = 0; i < len1; i++) {
-					for (int j = 0; j < len2; j++) {
-						for (int k = 0; k < len3; k++) {
-							results[i][j][k] = new String(resultBytes[i][j][k]);
-						}
-					}
-				}
+				final String[][][] results = new String[len1][len2][len3];
+				StdArrays.copyFrom((TString) tensor.data(), results);
 				return results;
 			}
 			case 4: {
@@ -307,18 +234,8 @@ public class TensorConversion {
 				final int len2 = (int) tensor.shape().size(1);
 				final int len3 = (int) tensor.shape().size(2);
 				final int len4 = (int) tensor.shape().size(3);
-				final byte[][][][][] resultBytes = new byte[len1][len2][len3][len4][];
-				StdArrays.copyFrom((TUint8) tensor.data(), resultBytes);
-				String[][][][] results = new String[len1][len2][len3][len4];
-				for (int i = 0; i < len1; i++) {
-					for (int j = 0; j < len2; j++) {
-						for (int k = 0; k < len3; k++) {
-							for (int m = 0; m < len4; m++) {
-								results[i][j][k][m] = new String(resultBytes[i][j][k][m]);
-							}
-						}
-					}
-				}
+				final String[][][][] results = new String[len1][len2][len3][len4];
+				StdArrays.copyFrom((TString) tensor.data(), results);
 				return results;
 			}
 			case 5: {
@@ -327,20 +244,8 @@ public class TensorConversion {
 				final int len3 = (int) tensor.shape().size(2);
 				final int len4 = (int) tensor.shape().size(3);
 				final int len5 = (int) tensor.shape().size(4);
-				final byte[][][][][][] resultBytes = new byte[len1][len2][len3][len4][len5][];
-				StdArrays.copyFrom((TUint8) tensor.data(), resultBytes);
-				String[][][][][] results = new String[len1][len2][len3][len4][len5];
-				for (int i = 0; i < len1; i++) {
-					for (int j = 0; j < len2; j++) {
-						for (int k = 0; k < len3; k++) {
-							for (int m = 0; m < len4; m++) {
-								for (int n = 0; n < len5; n++) {
-									results[i][j][k][m][n] = new String(resultBytes[i][j][k][m][n]);
-								}
-							}
-						}
-					}
-				}
+				final String[][][][][] results = new String[len1][len2][len3][len4][len5];
+				StdArrays.copyFrom((TString) tensor.data(), results);
 				return results;
 			}
 			default:

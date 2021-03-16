@@ -186,6 +186,8 @@ public class TFInference {
 						//rows[j].setField(i, cols[j]);
 					}
 				}
+			} catch (Exception e) {
+				LOG.error("Error in inference: ", e);
 			} finally {
 				for (Tensor<?> tensor : toClose) {
 					tensor.close();
