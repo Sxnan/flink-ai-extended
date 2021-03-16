@@ -7,9 +7,9 @@ addons:
     packages:
       - python3
       - python3-pip
-      - python3-setuptools
 before_install:
-- pip3 install -U --user pip six numpy wheel mock grpcio grpcio-tools
+- pip3 install --upgrade --user pip setuptools wheel
+- pip3 install -U --user six numpy mock grpcio grpcio-tools
 script:
 - cd deep-learning-on-flink && mvn -DskipITs=true clean package
 branches:
