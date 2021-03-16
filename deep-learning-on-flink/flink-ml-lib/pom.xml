@@ -26,13 +26,11 @@
         <dependency>
             <groupId>org.tensorflow</groupId>
             <artifactId>tensorflow-core-api</artifactId>
-            <version>0.2.0</version>
             <classifier>linux-x86_64${javacpp.platform.extension}</classifier>
         </dependency>
         <dependency>
             <groupId>org.tensorflow</groupId>
             <artifactId>tensorflow-core-api</artifactId>
-            <version>0.2.0</version>
             <classifier>macosx-x86_64${javacpp.platform.extension}</classifier>
         </dependency>
         <dependency>

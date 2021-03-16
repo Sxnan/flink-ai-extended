@@ -49,6 +49,16 @@
             <groupId>org.tensorflow</groupId>
             <artifactId>tensorflow-core-api</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.tensorflow</groupId>
+            <artifactId>tensorflow-core-api</artifactId>
+            <classifier>linux-x86_64${javacpp.platform.extension}</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.tensorflow</groupId>
+            <artifactId>tensorflow-core-api</artifactId>
+            <classifier>macosx-x86_64${javacpp.platform.extension}</classifier>
+        </dependency>
 
         <dependency>
             <groupId>junit</groupId>

@@ -83,6 +83,7 @@
         <pip.install.option>--user</pip.install.option>
         <gpg.skip>true</gpg.skip>
         <javadoc.skip>true</javadoc.skip>
+        <javacpp.platform.extension></javacpp.platform.extension>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -293,6 +294,18 @@
                 <groupId>org.tensorflow</groupId>
                 <artifactId>tensorflow-core-api</artifactId>
                 <version>${tensorflow.java.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.tensorflow</groupId>
+                <artifactId>tensorflow-core-api</artifactId>
+                <version>${tensorflow.java.version}</version>
+                <classifier>linux-x86_64${javacpp.platform.extension}</classifier>
+            </dependency>
+            <dependency>
+                <groupId>org.tensorflow</groupId>
+                <artifactId>tensorflow-core-api</artifactId>
+                <version>${tensorflow.java.version}</version>
+                <classifier>macosx-x86_64${javacpp.platform.extension}</classifier>
             </dependency>
         </dependencies>
     </dependencyManagement>
