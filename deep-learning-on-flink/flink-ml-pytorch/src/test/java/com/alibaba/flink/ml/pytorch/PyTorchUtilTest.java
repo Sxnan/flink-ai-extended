@@ -18,6 +18,7 @@
 
 package com.alibaba.flink.ml.pytorch;
 
+import com.alibaba.flink.ml.util.MLConstants;
 import com.alibaba.flink.ml.util.TestUtil;
 import org.apache.curator.test.TestingServer;
 
@@ -52,6 +53,7 @@ public class PyTorchUtilTest {
 	public void trainStream() throws Exception {
 		PyTorchConfig pytorchConfig = new PyTorchConfig(3, null,
 				rootPath + "greeter.py", "map_func", null);
+		pytorchConfig.getMlConfig().addProperty(MLConstants.PYTHON_VERSION, "3");
 		StreamExecutionEnvironment streamEnv = StreamExecutionEnvironment.getExecutionEnvironment();
 		PyTorchUtil.train(streamEnv, null, pytorchConfig, null);
 		streamEnv.execute();
@@ -61,6 +63,7 @@ public class PyTorchUtilTest {
 	public void trainTable() throws Exception {
 		PyTorchConfig pytorchConfig = new PyTorchConfig(3, null,
 				rootPath + "greeter.py", "map_func", null);
+		pytorchConfig.getMlConfig().addProperty(MLConstants.PYTHON_VERSION, "3");
 		StreamExecutionEnvironment streamEnv = StreamExecutionEnvironment.getExecutionEnvironment();
 		TableEnvironment tableEnv = StreamTableEnvironment.create(streamEnv);
 		StatementSet statementSet = tableEnv.createStatementSet();
