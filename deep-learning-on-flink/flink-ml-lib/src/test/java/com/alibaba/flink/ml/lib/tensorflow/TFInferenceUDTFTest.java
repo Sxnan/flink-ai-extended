@@ -30,13 +30,13 @@ public class TFInferenceUDTFTest {
 		String modelDir = this.getClass().getClassLoader().getResource("").getPath()+"export";
 		File f = new File(modelDir);
 		if(!f.exists()) {
-			Assert.assertTrue(ShellExec.run("python3 " + pythonScript));
+			Assert.assertTrue(ShellExec.run("python " + pythonScript));
 		}
 		String pythonScript2 = pythonScriptPath + "build_model.py";
 		String modelDir2 = this.getClass().getClassLoader().getResource("").getPath()+"export2";
 		File f2 = new File(modelDir2);
 		if(!f2.exists()) {
-			Assert.assertTrue(ShellExec.run("python3 " + pythonScript2));
+			Assert.assertTrue(ShellExec.run("python " + pythonScript2));
 		}
 	}
 

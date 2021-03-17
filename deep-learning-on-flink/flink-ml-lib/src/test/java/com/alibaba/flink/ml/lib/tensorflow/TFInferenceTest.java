@@ -24,7 +24,7 @@ public class TFInferenceTest {
 		String modelDir = this.getClass().getClassLoader().getResource("").getPath()+"export";
 		File f = new File(modelDir);
 		if(!f.exists()) {
-			Assert.assertTrue(ShellExec.run("python3 " + pythonScript));
+			Assert.assertTrue(ShellExec.run("python " + pythonScript));
 		}
 	}
 
