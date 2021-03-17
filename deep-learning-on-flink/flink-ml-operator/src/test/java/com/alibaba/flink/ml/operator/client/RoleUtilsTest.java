@@ -73,7 +73,6 @@ public class RoleUtilsTest {
         LOG.info("RUN TEST:" + SysUtil._FUNC_());
         MLConfig mlConfig = DummyContext.createDummyMLConfig();
         mlConfig.setRoleNum(new WorkerRole().name(), 2);
-        mlConfig.addProperty(MLConstants.PYTHON_VERSION, "3");
         String[] files = {rootPath + "greeter.py"};
         mlConfig.setPythonFiles(files);
         mlConfig.setFuncName("map_func");
@@ -89,7 +88,6 @@ public class RoleUtilsTest {
         LOG.info("RUN TEST:" + SysUtil._FUNC_());
         MLConfig mlConfig = DummyContext.createDummyMLConfig();
         mlConfig.setRoleNum(new WorkerRole().name(), 3);
-        mlConfig.addProperty(MLConstants.PYTHON_VERSION, "3");
         String[] files = {rootPath + "output_json.py"};
         mlConfig.setPythonFiles(files);
         mlConfig.setFuncName("map_func");
@@ -106,7 +104,6 @@ public class RoleUtilsTest {
         LOG.info("RUN TEST:" + SysUtil._FUNC_());
         MLConfig mlConfig = DummyContext.createDummyMLConfig();
         mlConfig.setRoleNum(new WorkerRole().name(), 3);
-        mlConfig.addProperty(MLConstants.PYTHON_VERSION, "3");
         String[] files = {rootPath + "input_output_json.py"};
         mlConfig.setPythonFiles(files);
         mlConfig.setFuncName("map_func");
@@ -124,7 +121,6 @@ public class RoleUtilsTest {
         LOG.info("RUN TEST:" + SysUtil._FUNC_());
         MLConfig mlConfig = DummyContext.createDummyMLConfig();
         mlConfig.setRoleNum(new WorkerRole().name(), 2);
-        mlConfig.addProperty(MLConstants.PYTHON_VERSION, "3");
         String[] files = {rootPath + "greeter.py"};
         mlConfig.setPythonFiles(files);
         mlConfig.setFuncName("map_func");
@@ -142,7 +138,6 @@ public class RoleUtilsTest {
         LOG.info("RUN TEST:" + SysUtil._FUNC_());
         MLConfig mlConfig = DummyContext.createDummyMLConfig();
         mlConfig.setRoleNum(new WorkerRole().name(), 3);
-        mlConfig.addProperty(MLConstants.PYTHON_VERSION, "3");
         String[] files = {rootPath + "output_row.py"};
         mlConfig.setPythonFiles(files);
         mlConfig.setFuncName("map_func");
@@ -177,7 +172,6 @@ public class RoleUtilsTest {
         LOG.info("RUN TEST:" + SysUtil._FUNC_());
         MLConfig mlConfig = DummyContext.createDummyMLConfig();
         mlConfig.setRoleNum(new WorkerRole().name(), 3);
-        mlConfig.addProperty(MLConstants.PYTHON_VERSION, "3");
         String[] files = {rootPath + "input_output_row.py"};
         mlConfig.setPythonFiles(files);
         mlConfig.setFuncName("map_func");
