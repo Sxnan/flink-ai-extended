@@ -218,7 +218,7 @@ else()
   endif()
 
   # tensorflow 1.15 use .so.1 for the library extension in linux. We add the suffix so that it can be found.
-  list(APPEND CMAKE_FIND_LIBRARY_SUFFIXES .so.1)
+  list(APPEND CMAKE_FIND_LIBRARY_SUFFIXES .so.2)
   find_library( TF_DETECTED_LIBRARY
       NAMES tensorflow_framework
       PATHS "${TensorFlow_C_LIBRARY_DIR}" # Prefer the library from the build tree, if TensorFlow_C_LIBRARY is detected.
