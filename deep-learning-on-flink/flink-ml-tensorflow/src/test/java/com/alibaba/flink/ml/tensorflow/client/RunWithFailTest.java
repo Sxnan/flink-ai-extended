@@ -69,6 +69,7 @@ public class RunWithFailTest {
 		System.out.println("Current version:" + version);
 		TFConfig config = new TFConfig(worker, ps, null, new String[] { scriptAbsolutePath(pyFile) },
 				"map_func", null);
+		config.addProperty(MLConstants.PYTHON_VERSION, "3");
 		return config;
 	}
 
